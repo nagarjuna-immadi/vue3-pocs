@@ -9,4 +9,11 @@ if (process.env.NODE_ENV === 'development') {
   worker.start();
 }
 
-createApp(App).use(store).use(router).mount('#app');
+const app = createApp(App);
+console.log('Application Instance', app);
+
+app.use(store);
+app.use(router);
+
+const rootComponetInstance = app.mount('#app');
+console.log('rootComponetInstance', rootComponetInstance);

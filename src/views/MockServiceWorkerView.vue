@@ -14,7 +14,7 @@ export default {
       message: '',
     };
   },
-  async created() {
+  async mounted() {
     try {
       this.message = await fetchMessage();
     } catch (error) {

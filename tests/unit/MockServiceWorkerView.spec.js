@@ -1,6 +1,6 @@
 import { setupServer } from 'msw/node';
 import { mount } from '@vue/test-utils';
-import App from '../../src/App.vue';
+import MockServiceWorkerView from '../../src/views/MockServiceWorkerView.vue';
 import handlers from '../../mocks/handlers';
 
 const server = setupServer(...handlers);
@@ -16,9 +16,9 @@ afterAll(() => {
 let wrapper;
 const worksMsg = 'MSW is working!';
 
-describe('App', () => {
-  beforeEach(() => {
-    wrapper = mount(App);
+describe('MockServiceWorkerView', () => {
+  beforeEach(async () => {
+    wrapper = await mount(MockServiceWorkerView);
   });
 
   it('calls fetchMessage once and displays a message', async () => {
