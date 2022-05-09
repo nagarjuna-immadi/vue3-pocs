@@ -1,0 +1,20 @@
+// @import "bootstrap/scss/bootstrap.scss";
+@import 'bootstrap/scss/functions'; // Required
+
+// variables should go here. After functions and before rest other imports
+
+@import 'bootstrap/scss/variables'; // Required
+@import 'bootstrap/scss/mixins'; // Required
+@import 'bootstrap/scss/root'; // Required
+@import 'bootstrap/scss/reboot'; // Required
+@import 'bootstrap/scss/transitions'; // Required for accordion
+@import "bootstrap/scss/utilities";
+@import "bootstrap/scss/type";
+@import "bootstrap/scss/images";
+@import "bootstrap/scss/containers";
+@import "bootstrap/scss/grid";
+@import "bootstrap/scss/helpers";
+@import "bootstrap/scss/utilities/api";
+
+// Component imports
+@import 'bootstrap/scss/accordion';
