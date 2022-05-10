@@ -3,9 +3,14 @@
     <div class="col-12">
       <ol>
         <li>
-          Item 1
+          Life Cycle Hooks
           <ol>
-            <li>Child Item 1</li>
+            <li>
+              <router-link to="/lchooks-options-api">Options API</router-link>
+            </li>
+            <li>
+              <router-link to="/lchooks-composition-api">Composition API</router-link>
+            </li>
           </ol>
         </li>
       </ol>

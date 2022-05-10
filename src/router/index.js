@@ -13,6 +13,16 @@ const routes = [
     component: () => import('../views/MockServiceWorkerView.vue'),
   },
   {
+    path: '/lchooks-options-api',
+    name: 'lchooks-options-api',
+    component: () => import('../views/LCHooksOptionsApi.vue'),
+  },
+  {
+    path: '/lchooks-composition-api',
+    name: 'lchooks-composition-api',
+    component: () => import('../views/LCHooksCompositionApi.vue'),
+  },
+  {
     path: '/about',
     name: 'about',
     component: () => import('../views/AboutView.vue'),
