@@ -23,9 +23,24 @@ const routes = [
     component: () => import('../views/LCHooksCompositionApi.vue'),
   },
   {
-    path: '/about',
-    name: 'about',
-    component: () => import('../views/AboutView.vue'),
+    path: '/watchers',
+    name: 'watchers',
+    component: () => import('../views/WatchersHomeView.vue'),
+  },
+  {
+    path: '/watchers/options',
+    name: 'watchers-options-api',
+    component: () => import('../views/WatchersOptionsApi.vue'),
+  },
+  {
+    path: '/watchers/composition',
+    name: 'watchers-composition-api',
+    component: () => import('../views/WatchersCompositionApi.vue'),
+  },
+  {
+    path: '/accordion',
+    name: 'accordion',
+    component: () => import('../views/AccordionView.vue'),
   },
 ];
 

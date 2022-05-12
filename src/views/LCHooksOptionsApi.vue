@@ -63,6 +63,9 @@ export default {
     // click increment count button to see updated in action
     // Called after the component has updated its DOM tree due to a reactive state change.
     // A parent component's updated hook is called after that of its child components.
+    // updated hook doesn't provide any information about the changes, use watchers
+    // if we want to compare old and new values in updated hook,
+    //  - store them in variables and compare later
     // This hook is not called during server-side rendering.
     console.log('6. updated - Component updated');
   },

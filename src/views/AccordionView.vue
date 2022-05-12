@@ -96,7 +96,7 @@
 import 'bootstrap/js/dist/collapse';
 
 export default {
-  name: 'AboutView',
+  name: 'AccordionView',
   components: {},
 };
 </script>

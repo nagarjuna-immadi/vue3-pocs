@@ -13,6 +13,9 @@
             </li>
           </ol>
         </li>
+        <li>
+          <router-link to="/watchers">Watchers</router-link>
+        </li>
       </ol>
     </div>
   </div>
