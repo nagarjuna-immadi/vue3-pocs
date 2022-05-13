@@ -3,11 +3,11 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 
-if (process.env.NODE_ENV === 'development') {
-  // eslint-disable-next-line
-  const { worker } = require('../mocks/browser');
-  worker.start();
-}
+// if (process.env.NODE_ENV === 'development') {
+//   // eslint-disable-next-line
+//   const { worker } = require('../mocks/browser');
+//   worker.start();
+// }
 
 const app = createApp(App);
 console.log('Application Instance', app);
