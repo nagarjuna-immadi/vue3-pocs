@@ -1,5 +1,5 @@
 <template>
-  <div class="row">
+  <div class="row mb-5">
     <div class="col-12">
       <h4>Watchers Composition API</h4>
       <div>
@@ -12,6 +12,7 @@
       </div>
 
       <div>
+        <h5 class="mt-5">Watch Source Types</h5>
         <label for="x"
           >X:&nbsp; <input type="number" v-model="x" class="form-control" id="x"
         /></label>
@@ -20,12 +21,20 @@
           >Y:&nbsp; <input type="number" v-model="y" class="form-control" id="y"
         /></label>
       </div>
+
+      <div>
+        <h5 class="mt-5">Deep Watchers</h5>
+        <label for="name"
+          >Name:&nbsp; <input type="text" v-model="user.name.first" class="form-control" id="name"
+        /></label>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, watch } from 'vue';
+/* eslint-disable comma-dangle */
+import { ref, watch, reactive } from 'vue';
 
 const question = ref('');
 const answer = ref('Questions usually contain a question mark. ;-)');
@@ -57,7 +66,7 @@ watch(
   () => x.value + y.value,
   (sum) => {
     console.log(`sum of x + y is: ${sum}`);
-  },
+  }
 );
 
 // array of multiple sources
@@ -65,4 +74,25 @@ watch([x, () => y.value], ([newX, newY], [oldX, oldY]) => {
   console.log(`old x is ${oldX} and old y is ${oldY}`);
   console.log(`x is ${newX} and y is ${newY}`);
 });
+
+const user = reactive({
+  name: {
+    first: 'nag',
+  },
+});
+
+// Deep watch on reactive objects
+watch(user, (newUser) => {
+  console.log('Deep watch: newUser', newUser);
+});
+
+// watcher on getter, don't watch deep.
+// deep: true will make it deep watch
+watch(
+  () => user,
+  (newUser) => {
+    console.log('Replaced newUser', newUser);
+  },
+  { deep: true }
+);
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div class="col-12">
+    <div class="col-12 mb-5">
       <h4>Watchers</h4>
       <ul class="notes-points">
         <li>
@@ -60,6 +60,18 @@
           we can watch multiple reactive properties at a time,
           <CodeBlock :code="codeStr6" />
         </li>
+        <li>
+          We cann't watch property of a reactive objective like below,
+          <CodeBlock :code="codeStr7" />
+          Here, obj.count returns count number. Instead, we have to use getter to watch object
+          properties.
+          <CodeBlock :code="codeStr8" />
+        </li>
+        <li>
+          When we call watch() directly on a reactive object, it will implicitly create a deep
+          watcher,
+          <CodeBlock :code="codeStr9" />
+        </li>
       </ul>
     </div>
   </div>
@@ -74,24 +86,46 @@ export default {
   components: { CodeBlock },
   data() {
     return {
-codeStr1: `watch: {
+      codeStr1: `watch: {
   question(newQuestion, oldQuestion) {}
 },`,
-codeStr2: `watch: {
+      codeStr2: `watch: {
   question: {
     handler(newQuestion, oldQuestion) {},
     deep: true,
     ...
   }
 }`,
-codeStr3: `this.questionUnwatch = this.$watch('question', (newQuestion) => {});
+      codeStr3: `this.questionUnwatch = this.$watch('question', (newQuestion) => {});
 this.questionUnwatch();`,
-codeStr4: `watch(question, async (newQuestion, oldQuestion) => {});`,
-codeStr5: `watch(
+      codeStr4: `watch(question, async (newQuestion, oldQuestion) => {});`,
+      codeStr5: `watch(
   () => x.value + y.value,
   (sum) => {},
 );`,
-codeStr6: `watch([x, () => y.value], ([newX, newY], [oldX, oldY]) => {});`,
+      codeStr6: `watch([x, () => y.value], ([newX, newY], [oldX, oldY]) => {});`,
+      codeStr7: `const obj = reactive({ count: 0 });
+watch(obj.count, (count) => {
+...
+});
+`,
+      codeStr8: `watch(
+  () => obj.count, // getter returns the property to watch
+  (count) => {
+    console.log(\`count is: \${count}\`)
+  }
+);
+`,
+      codeStr9: `const user = reactive({
+  name: {
+    first: 'nag',
+  },
+});
+
+watch(user, (newUser) => {
+...
+});
+`,
     };
   },
 };

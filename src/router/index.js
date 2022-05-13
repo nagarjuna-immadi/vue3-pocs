@@ -43,6 +43,11 @@ const routes = [
     component: () => import('../views/WatchersCompositionApi.vue'),
   },
   {
+    path: '/ref-vs-reactive',
+    name: 'ref-vs-reactive',
+    component: () => import('../views/RefVsReactive.vue'),
+  },
+  {
     path: '/other',
     name: 'other',
     component: () => import('../views/OtherImpConcepts.vue'),

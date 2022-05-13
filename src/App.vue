@@ -11,7 +11,7 @@
     </header>
   </div>
 
-  <div class="container">
+  <div class="container mb-5">
     <router-view />
   </div>
 </template>
