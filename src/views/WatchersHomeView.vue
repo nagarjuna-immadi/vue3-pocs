@@ -72,6 +72,31 @@
           watcher,
           <CodeBlock :code="codeStr9" />
         </li>
+        <li>
+          watch() is Lazy, the callback will be called only when the watched propery changes.
+          <b>watchEffect()</b> executes once immediately after page load and then re-execute on
+          dependent reactive prop changes.
+          <CodeBlock :code="codeStr10" />
+          Here, question is reactive property. So, watchEffect() start watching it like computed
+          property and perform the side effects when it changes.
+        </li>
+        <li>
+          By default, watch() or watchEffect() callbacks executes before the DOM update on reactive
+          property changes. flush: 'post' will make the callbacks to execute after DOM update.
+          watchPostEffect() is a alias for watchEffect with flush: 'post'
+          <CodeBlock :code="codeStr11" />
+        </li>
+        <li>
+          Watchers will be automatically stopped when the owner component is unmounted. In most
+          cases, we don't need to worry about stopping the watcher ourself. If the watcher is
+          created in an async callback, it won't be bound to the owner component and must be stopped
+          manually to avoid memory leaks.
+          <CodeBlock :code="codeStr12" />
+          To unwatch manually, use the returned handle function.
+          <!-- <CodeBlock :code="codeStr13" /> -->
+          <code-block :code="codeStr13"></code-block>
+          It works for both watch() and watchEffect()
+        </li>
       </ul>
     </div>
   </div>
@@ -126,6 +151,37 @@ watch(user, (newUser) => {
 ...
 });
 `,
+      codeStr10: `watchEffect(async () => {
+  console.log('watchEffect executed');
+  if (question.value.indexOf('?') > -1) {
+    console.log('Question asked');
+  }
+});
+`,
+      codeStr11: `import { watchPostEffect } from 'vue';
+  watch(source, callback, {
+  flush: 'post'
+});
+
+watchEffect(callback, {
+  flush: 'post'
+});
+
+watchPostEffect(() => {
+  /* executed after Vue updates */
+});
+`,
+      codeStr12: `// this one will be automatically stopped
+watchEffect(() => {})
+
+// ...this one will not!
+setTimeout(() => {
+  watchEffect(() => {})
+}, 100)`,
+      codeStr13: `const unwatch = watchEffect(() => {})
+
+// ...later, when no longer needed
+unwatch()`,
     };
   },
 };

@@ -9,10 +9,10 @@
           <router-link to="/watchers">Watchers</router-link>
         </li>
         <li>
-          <router-link to="/ref-vs-reactive">ref() vs reactive()</router-link>
+          <router-link to="/template-refs">Template Refs</router-link>
         </li>
         <li>
-          <router-link to="/other">Other Important Concepts</router-link>
+          <router-link to="/ref-vs-reactive">ref() vs reactive()</router-link>
         </li>
       </ol>
     </div>

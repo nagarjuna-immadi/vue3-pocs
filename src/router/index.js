@@ -43,14 +43,24 @@ const routes = [
     component: () => import('../views/WatchersCompositionApi.vue'),
   },
   {
+    path: '/template-refs',
+    name: 'template-refs',
+    component: () => import('../views/TemplateRefs.vue'),
+  },
+  {
+    path: '/template-refs/options-api',
+    name: 'template-refs-options-api',
+    component: () => import('../views/TemplateRefsOptionsApi.vue'),
+  },
+  {
+    path: '/template-refs/composition-api',
+    name: 'template-refs-composition-api',
+    component: () => import('../views/TemplateRefsCompositionApi.vue'),
+  },
+  {
     path: '/ref-vs-reactive',
     name: 'ref-vs-reactive',
     component: () => import('../views/RefVsReactive.vue'),
-  },
-  {
-    path: '/other',
-    name: 'other',
-    component: () => import('../views/OtherImpConcepts.vue'),
   },
   {
     path: '/accordion',

@@ -34,7 +34,9 @@
 
 <script setup>
 /* eslint-disable comma-dangle */
-import { ref, watch, reactive } from 'vue';
+import {
+  ref, watch, reactive, watchEffect
+} from 'vue';
 
 const question = ref('');
 const answer = ref('Questions usually contain a question mark. ;-)');
@@ -50,6 +52,13 @@ watch(question, async (newQuestion, oldQuestion) => {
     } catch (error) {
       answer.value = `Error! Could not reach the API. ${error}`;
     }
+  }
+});
+
+watchEffect(async () => {
+  console.log('watchEffect executed');
+  if (question.value.indexOf('?') > -1) {
+    console.log('Question asked');
   }
 });
 
