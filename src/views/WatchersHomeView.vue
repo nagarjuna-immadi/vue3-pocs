@@ -23,10 +23,10 @@
       </ul>
       <ol>
         <li>
-          <router-link to="/watchers/options">Options API</router-link>
+          <router-link to="/watchers/options-api">Options API</router-link>
         </li>
         <li>
-          <router-link to="/watchers/composition">Composition API</router-link>
+          <router-link to="/watchers/composition-api">Composition API</router-link>
         </li>
       </ol>
     </div>

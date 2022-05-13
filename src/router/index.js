@@ -13,12 +13,17 @@ const routes = [
     component: () => import('../views/MockServiceWorkerView.vue'),
   },
   {
-    path: '/lchooks-options-api',
+    path: '/lchooks',
+    name: 'lchooks',
+    component: () => import('../views/LCHooksView.vue'),
+  },
+  {
+    path: '/lchooks/options-api',
     name: 'lchooks-options-api',
     component: () => import('../views/LCHooksOptionsApi.vue'),
   },
   {
-    path: '/lchooks-composition-api',
+    path: '/lchooks/composition-api',
     name: 'lchooks-composition-api',
     component: () => import('../views/LCHooksCompositionApi.vue'),
   },
@@ -28,14 +33,19 @@ const routes = [
     component: () => import('../views/WatchersHomeView.vue'),
   },
   {
-    path: '/watchers/options',
+    path: '/watchers/options-api',
     name: 'watchers-options-api',
     component: () => import('../views/WatchersOptionsApi.vue'),
   },
   {
-    path: '/watchers/composition',
+    path: '/watchers/composition-api',
     name: 'watchers-composition-api',
     component: () => import('../views/WatchersCompositionApi.vue'),
+  },
+  {
+    path: '/other',
+    name: 'other',
+    component: () => import('../views/OtherImpConcepts.vue'),
   },
   {
     path: '/accordion',

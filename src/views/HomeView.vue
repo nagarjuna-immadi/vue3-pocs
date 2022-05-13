@@ -3,18 +3,13 @@
     <div class="col-12">
       <ol>
         <li>
-          Life Cycle Hooks
-          <ol>
-            <li>
-              <router-link to="/lchooks-options-api">Options API</router-link>
-            </li>
-            <li>
-              <router-link to="/lchooks-composition-api">Composition API</router-link>
-            </li>
-          </ol>
+          <router-link to="/lchooks">Life Cycle Hooks</router-link>
         </li>
         <li>
           <router-link to="/watchers">Watchers</router-link>
+        </li>
+        <li>
+          <router-link to="/other">Other Important Concepts</router-link>
         </li>
       </ol>
     </div>
@@ -22,10 +17,7 @@
 </template>
 
 <script>
-import 'bootstrap/js/dist/collapse';
-
 export default {
   name: 'HomeView',
-  components: {},
 };
 </script>
