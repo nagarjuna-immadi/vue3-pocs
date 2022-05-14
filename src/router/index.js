@@ -77,6 +77,11 @@ const routes = [
     name: 'reactivity-composition-api',
     component: () => import('../views/ReactivityCompositionApi.vue'),
   },
+  {
+    path: '/computed-properties',
+    name: 'computed-properties',
+    component: () => import('../views/ComputedProperties.vue'),
+  },
 ];
 
 const router = createRouter({

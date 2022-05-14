@@ -3,6 +3,9 @@
     <div class="col-12">
       <ol class="items-list">
         <li>
+          <router-link to="/computed-properties">Computed Properties</router-link>
+        </li>
+        <li>
           <router-link to="/reactivity">Reactivity</router-link>
         </li>
         <li>
