@@ -8,6 +8,11 @@ const routes = [
     component: HomeView,
   },
   {
+    path: '/accordion',
+    name: 'accordion',
+    component: () => import('../views/AccordionView.vue'),
+  },
+  {
     path: '/msw',
     name: 'msw',
     component: () => import('../views/MockServiceWorkerView.vue'),
@@ -58,14 +63,19 @@ const routes = [
     component: () => import('../views/TemplateRefsCompositionApi.vue'),
   },
   {
-    path: '/ref-vs-reactive',
-    name: 'ref-vs-reactive',
-    component: () => import('../views/RefVsReactive.vue'),
+    path: '/reactivity',
+    name: 'reactivity',
+    component: () => import('../views/ReactivityView.vue'),
   },
   {
-    path: '/accordion',
-    name: 'accordion',
-    component: () => import('../views/AccordionView.vue'),
+    path: '/reactivity/options-api',
+    name: 'reactivity-options-api',
+    component: () => import('../views/ReactivityOptionsApi.vue'),
+  },
+  {
+    path: '/reactivity/composition-api',
+    name: 'reactivity-composition-api',
+    component: () => import('../views/ReactivityCompositionApi.vue'),
   },
 ];
 

@@ -3,6 +3,9 @@
     <div class="col-12">
       <ol class="items-list">
         <li>
+          <router-link to="/reactivity">Reactivity</router-link>
+        </li>
+        <li>
           <router-link to="/lchooks">Life Cycle Hooks</router-link>
         </li>
         <li>
@@ -10,9 +13,6 @@
         </li>
         <li>
           <router-link to="/template-refs">Template Refs</router-link>
-        </li>
-        <li>
-          <router-link to="/ref-vs-reactive">ref() vs reactive()</router-link>
         </li>
       </ol>
     </div>
