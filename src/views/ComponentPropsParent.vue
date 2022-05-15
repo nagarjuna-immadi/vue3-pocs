@@ -1,7 +1,12 @@
 <template>
   <div>
     <h6>Child Component</h6>
-    <ComponentPropsChild :count="count" :blog="blog" />
+    <ComponentPropsChild
+      :count="count"
+      :blog="blog"
+      @increment-by-five="increaseBy"
+      class="gray"
+    />
 
     <div class="my-4">
       <h6>Parent Component</h6>
@@ -30,4 +35,8 @@ const blog = ref({
   id: 1,
   title: 'Javascript advance concepts',
 });
+
+function increaseBy(val) {
+  count.value += val;
+}
 </script>

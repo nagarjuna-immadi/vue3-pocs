@@ -2,6 +2,9 @@
 <template>
   <div>
     <div class="mb-3">
+      <span>Fallthrough attributes: {{ $attrs }}</span>
+    </div>
+    <div class="mb-3">
       <label for="count">
         Count: {{ count }} <br />
         <!-- DON'T MODIFY THE props FROM CHILD -->
@@ -15,12 +18,17 @@
         <input type="text" class="form-control" v-model="props.blog.title" id="title" />
       </label>
     </div>
+    <div class="mt-3">
+      <button class="btn btn-primary" @click="increaseCount">Increase Count</button>
+    </div>
   </div>
 </template>
 
 <script setup>
 /* eslint-disable vue/no-mutating-props */
-import { defineProps, watch, ref } from 'vue';
+/* eslint-disable comma-dangle */
+// eslint-disable-next-line
+import { defineProps, watch, ref, defineEmits, useAttrs } from 'vue';
 
 const props = defineProps({
   count: Number,
@@ -47,6 +55,23 @@ watch(
   () => props.count,
   (newCounter) => {
     console.log('newCounter', newCounter);
-  },
+  }
 );
+
+// Events
+const emit = defineEmits(['incrementByFive']);
+
+function increaseCount() {
+  emit('incrementByFive', 5);
+}
+
+// Use attributes
+const attrs = useAttrs();
+console.log('attrs', attrs);
+</script>
+
+<script>
+export default {
+  inheritAttrs: true, // make it false to prevent fall through attributes
+};
 </script>

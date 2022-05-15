@@ -35,7 +35,9 @@
           &lt;MyComponent&gt; and &lt;my-component&gt;
         </li>
         <li><b>Props</b></li>
-        <li><router-link to="/components/props">Component Props Example</router-link></li>
+        <li>
+          <router-link to="/components/props">Component Props and Events Example</router-link>
+        </li>
         <li>
           We can define props by an array or an object
           <CodeBlock :code="codeStr1" />
@@ -89,14 +91,133 @@
             </li>
           </ul>
         </li>
+        <li><b>Events</b></li>
+        <li>
+          <router-link to="/components/props">Component Props and Events Example</router-link>
+        </li>
+        <li>
+          A component can emit custom events directly in template expressions (e.g. in a v-on
+          handler) using the built-in $emit function
+          <CodeBlock :code="codeStr5" />
+          Events can be listened by kebab-case.
+        </li>
+        <li>
+          Unlike native DOM events, component emitted events do not bubble. You can only listen to
+          the events emitted by a direct child component.
+        </li>
+        <li>
+          Emitted events can be explicitly declared on the component via the defineEmits() macro. In
+          Options api, using 'emits' option.
+          <CodeBlock :code="codeStr6" />
+          Emits can be an object also. Also, validations can be applied like props.
+        </li>
+        <li>
+          If a component contains 'modelValue' property and 'update:modelValue' event then it
+          supports v-model.
+          <CodeBlock :code="codeStr7" />
+        </li>
+        <li><b>Fallthrough Attributes</b></li>
+        <li>
+          <router-link to="/components/props">Component Props and Events Example</router-link>
+        </li>
+        <li>
+          When a component renders a single root element, fallthrough attributes will be
+          automatically added to the root element's attributes.
+          <CodeBlock :code="codeStr8" />
+          Here count, blog and increment-by-five are explicitly declared props and emitters. So,
+          those are not fall through attributes. Any other attributes like class, style, id etc...
+        </li>
+        <li>
+          Nested Component Inheritance: If the child component have another one and only child
+          component as root element then the attributes will fall through to next level.
+        </li>
+        <li>Fall through attributes can be accessed through $attrs</li>
+        <li>
+          Automatic fall through is not available for components with multiple root nodes. We have
+          to assign the attributes manually.
+          <CodeBlock :code="codeStr9" />
+          In code attaributes can be accessed with this.$attrs
+        </li>
+        <li>
+          If the root element already have the same attribute, then fall through attribute values
+          will merge. For ex: class="large" after fall through merge class="large gray"
+        </li>
+        <li>inheritAttrs: false, in component options will prevent fall through attributes.</li>
+        <li>In compositon api, we have to define a seperate normal script tag to configure it.
+          <CodeBlock :code="codeStr10" />
+        </li>
+        <li>In composition api, if we want to access fall through attributes in Javascript
+          <CodeBlock :code="codeStr11" />
+        </li>
       </ul>
     </div>
   </div>
 </template>
 
 <script setup>
-import CodeBlock from '@/components/CodeBlock.vue';
 /* eslint-disable quotes */
+const codeStr11 = `import { useAttrs } from 'vue'
+
+const attrs = useAttrs()`;
+const codeStr10 = `<scrpt>
+export default {
+  inheritAttrs: false,
+};
+</scrpt>`;
+const codeStr9 = `<header>...</header>
+<main v-bind="$attrs">...</main>
+<footer>...</footer>`;
+const codeStr8 = `<ComponentPropsChild
+  :count="count"
+  :blog="blog"
+  @increment-by-five="increaseBy"
+  class="gray"
+/>
+
+// class will be shifted to child component root element in the run time
+<template>
+  <div class="gray">
+  ...
+  </div>
+<template>
+`;
+const codeStr7 = `<CustomInput
+  :modelValue="searchText"
+  @update:modelValue="newValue => searchText = newValue"
+/>
+
+// It supports v-model
+<CustomInput v-model="searchText" />
+
+<!-- CustomInput.vue -->
+// In script
+defineProps(['modelValue'])
+defineEmits(['update:modelValue'])
+
+<template>
+  <input
+    :value="modelValue"
+    @input="$emit('update:modelValue', $event.target.value)"
+  />
+</template>`;
+const codeStr6 = `// Composition api
+const emit = defineEmits(['inFocus', 'submit'])
+
+// Options api
+{
+  ...
+  emits: ['inFocus', 'submit']
+  ...
+}
+`;
+const codeStr5 = `<button @click="$emit('someEvent')">click me</button>
+
+// The parent can then listen to it using v-on
+<MyComponent @some-event="callback" />
+
+// Emiit from a component method
+this.$emit('increaseBy', 1); // Here 1 is event argument
+`;
 const codeStr4 = `// counter only uses props.count as the initial value;
 // it is disconnected from future prop updates.
 const counter = ref(props.count);
