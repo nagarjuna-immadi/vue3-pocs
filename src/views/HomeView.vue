@@ -17,6 +17,9 @@
         <li>
           <router-link to="/template-refs">Template Refs</router-link>
         </li>
+        <li>
+          <router-link to="/components">Components</router-link>
+        </li>
       </ol>
     </div>
   </div>

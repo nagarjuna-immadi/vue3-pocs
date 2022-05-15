@@ -82,6 +82,16 @@ const routes = [
     name: 'computed-properties',
     component: () => import('../views/ComputedProperties.vue'),
   },
+  {
+    path: '/components',
+    name: 'components',
+    component: () => import('../views/ComponentsView.vue'),
+  },
+  {
+    path: '/components/props',
+    name: 'component-props',
+    component: () => import('../views/ComponentPropsParent.vue'),
+  },
 ];
 
 const router = createRouter({
