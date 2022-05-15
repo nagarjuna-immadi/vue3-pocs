@@ -143,11 +143,97 @@
           will merge. For ex: class="large" after fall through merge class="large gray"
         </li>
         <li>inheritAttrs: false, in component options will prevent fall through attributes.</li>
-        <li>In compositon api, we have to define a seperate normal script tag to configure it.
+        <li>
+          In compositon api, we have to define a seperate normal script tag to configure it.
           <CodeBlock :code="codeStr10" />
         </li>
-        <li>In composition api, if we want to access fall through attributes in Javascript
+        <li>
+          In composition api, if we want to access fall through attributes in Javascript
           <CodeBlock :code="codeStr11" />
+        </li>
+        <li><b>Slots</b></li>
+        <li><router-link to="/slots">slots example</router-link></li>
+        <li><b>props</b> help component to pass Javascript values to child component.</li>
+        <li>
+          <b>slots</b> help component to pass template content to child component
+          <CodeBlock :code="codeStr12" />
+        </li>
+        <li>
+          Slot content has access to the data scope of the parent component, because it is defined
+          in the parent.
+        </li>
+        <li>Slot content does not have access to the child component's data.</li>
+        <li>
+          As a rule, remember that:
+          <cite
+            >Everything in the parent template is compiled in parent scope; everything in the child
+            template is compiled in the child scope.</cite
+          >
+        </li>
+        <li>
+          <b>Fallback content: </b> If parent component don't send content child slot then fall back
+          content will display
+          <CodeBlock :code="codeStr13" />
+        </li>
+        <li>
+          We can have named slots and un-named default slot
+          <CodeBlock :code="codeStr14" />
+        </li>
+        <li>
+          We can pass slot name dynamically,
+          <CodeBlock :code="codeStr15" />
+        </li>
+        <li>
+          <b>Scoped slots</b>: There are cases where it could be useful if a slot's content can make
+          use of data from both the parent scope and the child scope.
+        </li>
+        <li>we can pass attributes to a slot outlet just like passing props to a component</li>
+        <li><b>Provide & Inject</b></li>
+        <li>
+          props drilling - passing props from parent to very deep child through all the intermediate
+          child components
+        </li>
+        <li>
+          We can solve props drilling with provide and inject. A parent component can serve as a
+          <b>dependency provider</b> for all its descendants. Any component in the descendant tree,
+          regardless of how deep it is, can <b>inject dependencies</b> provided by components up in
+          its parent chain.
+        </li>
+        <li>
+          To provide data to a component's descendants, use the provide option:
+          <CodeBlock :code="codeStr16" />
+          In Composition API use provide() method
+        </li>
+        <li>
+          In addition to providing data in a component, we can also provide at the <b>app level</b>
+          <CodeBlock :code="codeStr17" />
+          App-level provides are available to all components rendered in the app. This is especially
+          useful when writing plugins, as plugins typically wouldn't be able to provide values using
+          components.
+        </li>
+        <li>
+          <b>Inject:</b> To inject data provided by an ancestor component, use the inject option
+          <CodeBlock :code="codeStr18" />
+          Injections are resolved before the component's own state, so you can access injected
+          properties in data()
+        </li>
+        <li>
+          Injection Aliasing: If we want to inject the property using a different local key, we need
+          to use the object syntax for the inject option
+          <CodeBlock :code="codeStr19" />
+          'default' value is used, if dependency is not provided in parent chain.
+        </li>
+        <li>
+          In order to make injections reactively linked to the provider, we need to provide a
+          computed property using the computed() function even in Options API.
+          <CodeBlock :code="codeStr20" />
+          The computed() function is typically used in Composition API components, but can also be
+          used to complement certain use cases in Options API.
+        </li>
+        <li>
+          Symbol keys: If the application is large then better to use symbol keys. Symbol injection
+          keys can avoid potential collisions.
+          <CodeBlock :code="codeStr21" />
         </li>
       </ul>
     </div>
@@ -156,6 +242,148 @@
 
 <script setup>
 /* eslint-disable quotes */
+const codeStr21 = `// keys.js
+export const myInjectionKey = Symbol()
+
+// in provider component
+import { myInjectionKey } from './keys.js'
+
+export default {
+  provide() {
+    return {
+      [myInjectionKey]: {
+        /* data to provide */
+      }
+    }
+  }
+}
+
+// in injector component
+import { myInjectionKey } from './keys.js'
+
+export default {
+  inject: {
+    injected: { from: myInjectionKey }
+  }
+}
+`;
+const codeStr20 = `import { computed } from 'vue'
+
+export default {
+  data() {
+    return {
+      message: 'hello!'
+    }
+  },
+  provide() {
+    return {
+      // explicitly provide a computed property
+      message: computed(() => this.message)
+    }
+  }
+}`;
+const codeStr19 = `export default {
+  inject: {
+    localMessage: { // local key
+      from: 'message', // injection key
+      default: 'Hello!' // default value
+    },
+  }
+}`;
+const codeStr18 = `export default {
+  inject: ['message'],
+  created() {
+    console.log(this.message) // injected value
+  },
+  data() {
+    return {
+      // initial data based on injected value
+      fullMessage: this.message
+    }
+  }
+}
+
+// In Compostion API use inject method
+import { inject } from 'vue'
+// value will be "default value"
+// if no data matching "message" was provided
+const value = inject('message', 'default value')
+`;
+const codeStr17 = `import { createApp } from 'vue'
+
+const app = createApp({})
+
+app.provide(/* key */ 'message', /* value */ 'hello!')`;
+const codeStr16 = `export default {
+  provide: {
+    message: 'hello!'
+  }
+}
+
+// use function syntax so that we can access this
+provide() {
+  return {
+    message: this.message
+  }
+}
+
+// In Composition API use provide() method
+import { provide } from 'vue'
+
+provide(/* key */ 'message', /* value */ 'hello!')
+`;
+const codeStr15 = `<base-layout>
+  <template v-slot:[dynamicSlotName]>
+    ...
+  </template>
+
+  <!-- with shorthand -->
+  <template #[dynamicSlotName]>
+    ...
+  </template>
+</base-layout>`;
+const codeStr14 = `// Base Layout
+<header>
+  <slot name="header"></slot>
+</header>
+<main>
+  <slot></slot>
+</main>
+<footer>
+  <slot name="footer"></slot>
+</footer>
+
+// Parent component
+<BaseLayout>
+  <template v-slot:header>
+    <div>Header Content</div>
+  </template>
+  <!-- Default content, don't need any slot name -->
+  <div>Default content</div>
+  <div>Default content2</div>
+  <template #footer>
+    <div>Footer Content</div>
+  </template>
+  <!-- Default content go to un named slot -->
+  <!-- <template #default>
+    <div>Default Content</div>
+  </template> -->
+</BaseLayout>`;
+const codeStr13 = `<button type="submit">
+  <slot>
+    Submit <!-- fallback content -->
+  </slot>
+</button>
+
+// It will render to
+<button type="submit">Submit</button>`;
+const codeStr12 = `<FancyButton>
+  Click me! <!-- slot content -->
+</FancyButton>
+
+<button class="fancy-btn">
+  <slot></slot> <!-- slot outlet -->
+</button>`;
 const codeStr11 = `import { useAttrs } from 'vue'
 
 const attrs = useAttrs()`;

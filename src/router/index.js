@@ -92,6 +92,11 @@ const routes = [
     name: 'component-props',
     component: () => import('../views/ComponentPropsParent.vue'),
   },
+  {
+    path: '/slots',
+    name: 'slots',
+    component: () => import('../views/SlotsView.vue'),
+  },
 ];
 
 const router = createRouter({
