@@ -20,6 +20,9 @@
         <li>
           <router-link to="/components">Components</router-link>
         </li>
+        <li>
+          <router-link to="/composables">Composables</router-link>
+        </li>
       </ol>
     </div>
   </div>

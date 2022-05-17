@@ -97,6 +97,16 @@ const routes = [
     name: 'slots',
     component: () => import('../views/SlotsView.vue'),
   },
+  {
+    path: '/composables',
+    name: 'composables',
+    component: () => import('../views/ComposablesView.vue'),
+  },
+  {
+    path: '/composables/example',
+    name: 'composables-example',
+    component: () => import('../views/ComposablesExample.vue'),
+  },
 ];
 
 const router = createRouter({
