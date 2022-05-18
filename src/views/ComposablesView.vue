@@ -21,7 +21,10 @@
         <li>There are many libraries out there for reusing stateless logic - for example lodash</li>
         <li>stateful logic involves managing state that changes over time</li>
         <li>one composable can be used in another composable</li>
-        <li>As per my understanding, composables are nothing but services</li>
+        <li>
+          As per my understanding, composables are nothing but services. Composables can handle
+          stateful logic while the services handle stateless logic or data
+        </li>
         <li>
           Naming: It is a convention to name composable functions with camelCase names that start
           with "use". Ex: function useFeature(maybeRef) {}

@@ -107,6 +107,16 @@ const routes = [
     name: 'composables-example',
     component: () => import('../views/ComposablesExample.vue'),
   },
+  {
+    path: '/custom-directives',
+    name: 'custom-directives',
+    component: () => import('../views/CustomDirectives.vue'),
+  },
+  {
+    path: '/plugins',
+    name: 'plugins',
+    component: () => import('../views/PluginsView.vue'),
+  },
 ];
 
 const router = createRouter({

@@ -23,6 +23,12 @@
         <li>
           <router-link to="/composables">Composables</router-link>
         </li>
+        <li>
+          <router-link to="/custom-directives">Custom Directives</router-link>
+        </li>
+        <li>
+          <router-link to="/plugins">Plugins</router-link>
+        </li>
       </ol>
     </div>
   </div>
