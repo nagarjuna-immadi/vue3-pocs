@@ -156,6 +156,13 @@
           top-level by using destructing to enjoy ref-unwrapping
           <CodeBlock :code="codeStr8" />
         </li>
+        <li><b>isRef(refVar): </b>to check if the variable is reactive or not.</li>
+        <li>
+          <b>unref(refVar): </b>un wraps the reactive variable. Ex: const value = unref(maybeRef);
+          If maybeRef is indeed a ref, its .value will be returned otherwise, maybeRef is returned
+          as-is. We can write composables or other reusable code by using 'unref', so that consumer
+          can send either ref arguments or normal arguments.
+        </li>
       </ul>
       <h4>Reactivity Debugging</h4>
       <ul class="notes-points">
