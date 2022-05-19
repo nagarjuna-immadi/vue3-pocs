@@ -113,6 +113,16 @@ const routes = [
     component: () => import('../views/CustomDirectives.vue'),
   },
   {
+    path: '/custom-directives/options-api',
+    name: 'custom-directives-options-api',
+    component: () => import('../views/CustomDirectivesOptionsApi.vue'),
+  },
+  {
+    path: '/custom-directives/composition-api',
+    name: 'custom-directives-composition-api',
+    component: () => import('../views/CustomDirectivesCompositionApi.vue'),
+  },
+  {
     path: '/plugins',
     name: 'plugins',
     component: () => import('../views/PluginsView.vue'),
