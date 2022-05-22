@@ -127,6 +127,31 @@ const routes = [
     name: 'plugins',
     component: () => import('../views/PluginsView.vue'),
   },
+  {
+    path: '/router',
+    name: 'router',
+    component: () => import('../views/RouterView.vue'),
+  },
+  {
+    path: '/state-management',
+    name: 'state-management',
+    component: () => import('../views/StateManagement.vue'),
+  },
+  {
+    path: '/simple-store',
+    name: 'simple-store',
+    component: () => import('../components/ComposableStoreChild.vue'),
+  },
+  {
+    path: '/testing',
+    name: 'testing',
+    component: () => import('../views/TestingView.vue'),
+  },
+  {
+    path: '/cli',
+    name: 'cli',
+    component: () => import('../views/CliTool.vue'),
+  },
 ];
 
 const router = createRouter({

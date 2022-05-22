@@ -1,0 +1,5 @@
+- transition and transition group components are for implimenting animation operations
+- <Teleport> is a built-in component that allows us to "teleport" a part of a component's template into a DOM node that exists outside the DOM hierarchy of that component.
+- <Suspense> is a built-in component for orchestrating async dependencies in a component tree. It can render a loading state while waiting for multiple nested async dependencies down the component tree to be resolved.
+    - It is at experimental phase. Not yet stable.
+

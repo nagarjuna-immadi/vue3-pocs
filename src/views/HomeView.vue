@@ -29,6 +29,18 @@
         <li>
           <router-link to="/plugins">Plugins</router-link>
         </li>
+        <li>
+          <router-link to="/router">Router</router-link>
+        </li>
+        <li>
+          <router-link to="/state-management">State Management</router-link>
+        </li>
+        <li>
+          <router-link to="/testing">Testing</router-link>
+        </li>
+        <li>
+          <router-link to="/cli">CLI Tool</router-link>
+        </li>
       </ol>
     </div>
   </div>

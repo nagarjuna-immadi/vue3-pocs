@@ -34,6 +34,10 @@
           means a component registered as MyComponent can be referenced in the template via both
           &lt;MyComponent&gt; and &lt;my-component&gt;
         </li>
+        <li>
+          Single File Components (SFC): Seperation of concern doesn't mean the Seperation of file
+          types. Vue single file components encaptulate script, style and template into one file.
+        </li>
         <li><b>Props</b></li>
         <li>
           <router-link to="/components/props">Component Props and Events Example</router-link>
