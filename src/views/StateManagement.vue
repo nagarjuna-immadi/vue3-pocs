@@ -56,6 +56,7 @@
             </li>
           </ul>
         </li>
+        <li><router-link to="/vuex">Vuex</router-link></li>
       </ul>
     </div>
   </div>

@@ -152,6 +152,16 @@ const routes = [
     name: 'cli',
     component: () => import('../views/CliTool.vue'),
   },
+  {
+    path: '/vuex',
+    name: 'vuex',
+    component: () => import('../views/VuexView.vue'),
+  },
+  {
+    path: '/vuex/examples',
+    name: 'vuex-examples',
+    component: () => import('../views/VuexExamples.vue'),
+  },
 ];
 
 const router = createRouter({

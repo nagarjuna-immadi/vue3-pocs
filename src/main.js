@@ -25,3 +25,6 @@ app.component('CodeBlock', CodeBlock);
 
 const rootComponetInstance = app.mount('#app');
 console.log('rootComponetInstance', rootComponetInstance);
+
+store.commit('increment');
+console.log('store count', store.state.count);
