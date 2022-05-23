@@ -1,11 +1,33 @@
+/* eslint-disable no-unused-vars */
 import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
+
+function isLoggedIn(to, from) {
+  console.log('isLoggedIn guard', to, from);
+  return true;
+}
+function isAdmin(to, from) {
+  console.log('isAdmin guard', to, from);
+  return true;
+}
+
+const LCHooksView = () => import('../views/LCHooksView.vue');
 
 const routes = [
   {
     path: '/',
     name: 'home',
     component: HomeView,
+    beforeEnter: (to, from) => {
+      console.log('beforeEnter', to, from);
+      return true;
+    },
+  },
+  {
+    // will match everything and put it under `$route.params.pathMatch`
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    component: () => import('../views/NotFound.vue'),
   },
   {
     path: '/accordion',
@@ -20,7 +42,7 @@ const routes = [
   {
     path: '/lchooks',
     name: 'lchooks',
-    component: () => import('../views/LCHooksView.vue'),
+    component: LCHooksView,
   },
   {
     path: '/lchooks/options-api',
@@ -162,11 +184,52 @@ const routes = [
     name: 'vuex-examples',
     component: () => import('../views/VuexExamples.vue'),
   },
+  {
+    path: '/users/:id',
+    component: () => import('../views/UserDetailView.vue'),
+    beforeEnter: [isLoggedIn, isAdmin],
+    children: [
+      {
+        path: 'profile',
+        component: () => import('../views/UserProfile.vue'),
+      },
+      {
+        path: 'posts',
+        component: () => import('../views/UserPosts.vue'),
+      },
+    ],
+  },
 ];
 
+/* eslint-disable no-else-return */
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    } else {
+      return { top: 0 };
+    }
+  },
+});
+
+router.beforeEach((to, from) => {
+  console.log('router global beforeEach to', to);
+  console.log('router global beforeEach from', from);
+  // return { name: 'Login' }; // route location can be returned
+  // return '/login'; // route path can be returned
+  return true; // return false to cancel navigation
+});
+
+router.beforeResolve(async (to, from) => {
+  console.log('router global beforeResolve to', to);
+  console.log('router global beforeResolve from', from);
+});
+
+router.afterEach((to, from, failure) => {
+  console.log('router global afterEach');
+  // if (!failure) sendToAnalytics(to.fullPath);
 });
 
 export default router;

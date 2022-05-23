@@ -24,6 +24,10 @@ export default {
       count: 0,
     };
   },
+  mounted() {
+    console.log('$router', this.$router);
+    console.log('$route', this.$route);
+  },
 };
 </script>
 
