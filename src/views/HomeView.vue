@@ -39,6 +39,15 @@
           <router-link to="/testing">Testing</router-link>
         </li>
         <li>
+          <router-link to="/vue-test-utils">Vue Test Utils</router-link>
+        </li>
+        <li>
+          <router-link to="/vue-testing-library">Vue Testing Library</router-link>
+        </li>
+        <li>
+          <router-link to="/jest">Jest</router-link>
+        </li>
+        <li>
           <router-link to="/cli">CLI Tool</router-link>
         </li>
       </ol>

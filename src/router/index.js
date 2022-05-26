@@ -166,8 +166,19 @@ const routes = [
   },
   {
     path: '/testing',
-    name: 'testing',
     component: () => import('../views/TestingView.vue'),
+  },
+  {
+    path: '/vue-test-utils',
+    component: () => import('../views/VueTestUtils.vue'),
+  },
+  {
+    path: '/vue-testing-library',
+    component: () => import('../views/VueTestingLibrary.vue'),
+  },
+  {
+    path: '/jest',
+    component: () => import('../views/JestView.vue'),
   },
   {
     path: '/cli',
