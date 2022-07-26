@@ -158,8 +158,8 @@ watch(user, (newUser) => {
   }
 });
 `,
-      codeStr11: `import { watchPostEffect } from 'vue';
-  watch(source, callback, {
+codeStr11: `import { watchPostEffect } from 'vue';
+watch(source, callback, {
   flush: 'post'
 });
 

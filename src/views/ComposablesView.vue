@@ -5,7 +5,7 @@
       <ul class="notes-points">
         <li><router-link to="/composables/example">Composables Example</router-link></li>
         <li>
-          <b>Composed: </b>make up (a whole, or a specified part of it) with different elements.
+          <b>Composed: </b>made up (a whole, or a specified part of it) with different elements.
         </li>
         <li><b>Composition: </b>a thing composed of various elements.</li>
         <li>
@@ -30,7 +30,7 @@
           with "use". Ex: function useFeature(maybeRef) {}
         </li>
         <li>
-          Return Values: Always ref() instead of reactive() in composables. The recommended
+          Return Values: Always use ref() instead of reactive() in composables. The recommended
           convention is to always return an object of refs from composables, so that it can be
           destructured in components while retaining reactivity. Ex: const { x, y } =
           trackMouseMove() <br />

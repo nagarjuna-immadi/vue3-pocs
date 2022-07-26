@@ -226,20 +226,20 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from) => {
-  console.log('router global beforeEach to', to);
-  console.log('router global beforeEach from', from);
+  // console.log('router global beforeEach to', to);
+  // console.log('router global beforeEach from', from);
   // return { name: 'Login' }; // route location can be returned
   // return '/login'; // route path can be returned
-  return true; // return false to cancel navigation
+  // return true; // return false to cancel navigation
 });
 
 router.beforeResolve(async (to, from) => {
-  console.log('router global beforeResolve to', to);
-  console.log('router global beforeResolve from', from);
+  // console.log('router global beforeResolve to', to);
+  // console.log('router global beforeResolve from', from);
 });
 
 router.afterEach((to, from, failure) => {
-  console.log('router global afterEach');
+  // console.log('router global afterEach');
   // if (!failure) sendToAnalytics(to.fullPath);
 });
 

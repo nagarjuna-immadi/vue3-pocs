@@ -13,11 +13,17 @@
     User age(Destructured prop): {{ userAge }} <br />
     User age(Destructured prop, works in expression): {{ userAge + 1 }} <br />
     User age(Destructured prop, .value don't work): {{ userAge.value }} <br />
+
+    <h3>reactive() method</h3>
+    countObjR.count: {{ countObjR.count }} <br />
+    countR: {{ countR }} <br />
   </div>
 </template>
 
 <script setup>
-import { onRenderTracked, onRenderTriggered, ref } from 'vue';
+import {
+  onRenderTracked, onRenderTriggered, ref, reactive,
+} from 'vue';
 
 // Primitive data type
 const count = ref(0);
@@ -48,4 +54,15 @@ onRenderTracked((event) => {
 onRenderTriggered((event) => {
   console.log('onRenderTriggered event', event);
 });
+
+// reactive() method
+const countObjR = reactive({ count: 0 });
+console.log('countObjR', countObjR);
+console.log('countObjR.count', countObjR.count);
+countObjR.count++;
+console.log('countObjR.count', countObjR.count);
+
+let countR = reactive(0);
+countR++;
+console.log('countR', countR);
 </script>
