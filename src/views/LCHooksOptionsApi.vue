@@ -29,12 +29,14 @@ export default {
     // After props resolution, before processing other options such as data() or computed
     // setup() hook of Composition API is called before any Options API hooks, even beforeCreate().
     console.log('1. beforeCreate - Component instance not yet created');
+    console.log(this.count); // Data not available
   },
   created() {
     // reactive data, computed properties, methods, and watchers
     // However, the mounting phase has not been started,
     // and the $el property will not be available yet.
     console.log('2. created - Component instance created');
+    console.log(this.count); // Data available
   },
   beforeMount() {
     // Called right before the component is to be mounted.

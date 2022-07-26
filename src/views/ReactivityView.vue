@@ -72,7 +72,6 @@
           In Vue, state is deeply reactive by default. This means we can expect changes to be
           detected even when we mutate nested objects or arrays
         </li>
-        <li></li>
       </ul>
 
       <h4>Reactivity Composition Api</h4>

@@ -78,7 +78,7 @@
           handlers
         </li>
         <li>
-          Using 'mapMutations' helper we can map store mutations to component methods.\
+          Using 'mapMutations' helper we can map store mutations to component methods.
           <CodeBlock :code="codeStr10"></CodeBlock>
         </li>
         <li>
